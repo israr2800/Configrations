@@ -1,0 +1,1281 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;400;500;600&display=swap');
+// font-family: 'Roboto Slab', serif;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600&display=swap');
+// font-family: 'Outfit', sans-serif;
+@supports (-moz-appearance:none) {
+    /* special attributes for mozilla only */
+}
+
+$primary: #c97077;
+$secondary: #5c3d46;
+$third: #18820a;
+$info: #285fdb;
+$gray: #eaeef1;
+$dark: #1a1a1a;
+$white: #fff;
+$yellow: #f1c40f;
+$red: #e63344;
+$border-light: 1px solid rgba(0,
+0,
+0,
+0.08);
+$extraBold: 700;
+$bold: 600;
+$semiBold: 500;
+$normal: 400;
+$light: 300;
+$thin: 100;
+$small: 12px;
+$medium: 14px;
+$default: 16px;
+$large: 18px;
+$xLarge: 24px;
+$xxLarge: 36px;
+@media screen and (max-width: 991px) {
+    $xLarge: 24px;
+    $xxLarge: 28px;
+}
+
+// MIXIN START
+mat-accordion {
+        mat-expansion-panel {
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            background: none;
+            margin: 0;
+            border-bottom: $border-light;
+            mat-expansion-panel-header {
+                height: auto;
+                font-size: $medium;
+                font-weight: $normal;
+                &.mat-expanded {
+                    height: auto;
+                }
+                .mat-content {
+                    align-items: center;
+                    svg, .icon {
+                        margin-right: 5px;
+                        width: 20px;
+                    }
+                }
+                color: $dark;
+                padding: 16px 12px;
+                .mat-expansion-indicator {
+                    &::after {
+                        color: $dark;
+                    }
+                }
+            }
+            mat-panel-description {
+                display: block;
+                margin-right: 0;
+                font-size: $medium;
+                font-weight: $normal;
+                mat-panel-title {
+                    color: $dark;
+                    cursor: pointer;
+                    padding: 16px 12px;
+                    margin-right: 0;
+                    &:hover {
+                        background: $secondary;
+                        color: $white !important;
+                    }
+                }
+            }
+            .mat-expansion-panel-content {
+                background: rgb(0 0 0 / 3%);
+                .mat-expansion-panel-body {
+                    padding: 0;
+                }
+            }
+        }
+        .mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover {
+            background: $secondary;
+            color: $white;
+            .mat-expansion-indicator {
+                &::after {
+                    color: $white;
+                }
+            }
+        }
+    }    
+
+@mixin swiperWrapper {
+    position: relative;
+    .mySwiper {
+        padding-bottom: 40px;
+        .swiper-button-next, .swiper-button-prev {
+            color: $primary;
+        }
+        .swiper-pagination-bullet {
+            background: none;
+            border: 2px solid $secondary;
+            width: 10px;
+            height: 10px;
+        }
+        position: relative;
+    }
+    .buttonNav {
+        background: none;
+        border-radius: 30px;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        border: 2px solid $secondary;
+        color: $secondary;
+        transform: translate(0, -50%);
+        z-index: 9;
+        &.prev {
+            left: 30px;
+        }
+        &.next {
+            right: 30px;
+        }
+        @media screen and (max-width: 991px) {
+            &.prev {
+                left: 15px;
+            }
+            &.right {
+                right: 15px;
+            }
+        }
+    }
+}
+
+@mixin textEllipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+@mixin sectionPadding {
+    @media screen and (min-width: 992px) {
+        padding: 80px 0;
+    }
+    @media screen and (max-width: 991px) {
+        padding: 40px 0;
+    }
+}
+
+@mixin scrollTop {
+    position: fixed;
+        bottom: 30px;
+        right: 30px;
+        cursor: pointer;
+        .icons {
+            background: $dark;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            @include dCenter();
+            font-size: 24px;
+            color: $white;
+            padding: 10px;
+            border: 2px solid $primary;
+            @include shadow();
+        }
+}
+@mixin footer {
+    background: $secondary;
+    padding-top: 60px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    p, li, span, div {
+        color: $white;
+        font-size: $medium;
+        font-weight: $light;
+    }
+    .logo-footer {
+        height: 40px;
+        max-width: 100%;
+        margin-bottom: 30px;
+        object-fit: contain;
+    }
+    .footer-col {
+        .heading {
+            font-size: $large;
+            color: $white;
+        }
+        ul {
+            li {
+                a {
+                    display: block;
+                    padding: 6px 0;
+                    position: relative;
+                    font-size: $small;
+                    color: $white;
+                    &:hover {
+                        color: #eeeeee;
+                        opacity: 0.9;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        .subscribefooter {
+            margin: 20px 0;
+            .inputField {
+                svg {
+                    position: absolute;
+                    top: 16px;
+                    left: 16px;
+                    color: $white;
+                    font-size: 30px;
+                    opacity: 0.2;;
+                }
+                input {
+                    padding: 22px 20px;
+                    height: auto;
+                    padding-left: 60px;
+                    background: rgb(255 255 255 / 20%);
+                    color: $gray;
+                    &::placeholder {
+                        color: rgba(255, 255, 255, 0.575);
+                    }
+                }
+                button {
+                    border-radius: 0;
+                    padding: 22px 20px;
+                    height: auto;
+                    letter-spacing: 1px;
+                    &:hover {
+                        transform: inherit;
+                    }
+                }
+            }
+        }
+        .socialUl {
+            li {
+                display: inline-block;
+                margin-bottom: 15px;
+                a {
+                  padding: 4px 10px;
+                  width: auto;
+                  height: auto;
+                  display: block;
+                  border-radius: 4px;
+                  border: 0;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                  transition: .2 ease-in-out;
+                  color: $white;
+                  font-size: 10px;
+                  &.facebook {
+                    background: #375197;
+                  }
+                  &.linkedin {
+                    background: #026eaa;
+                  }
+                  &.instagram {
+                    background-image: linear-gradient(162deg, #9748cf, #f8416a, #ff993e);
+                  }
+                  &.twitter {
+                    background: #1c99e6;
+                  }
+                  &:hover {
+                    color: inherit;
+                    text-decoration: none;
+                    transform: scale(1.05);
+                  }
+                }
+            }
+        }
+        .cardUl {
+            li {
+                display: inline-block;
+                margin-right: 4px;
+                .spiriteImg {
+                    width: 85px;
+                    height: 36px;
+                    &.pay1 {
+                        background-position: -15px -331px;
+                    }
+                    &.pay2 {
+                        background-position: -119px -331px;
+                    }
+                    &.pay3 {
+                        background-position: -223px -331px;
+                    }
+                    &.pay4 {
+                        background-position: -325px -331px;
+                    }
+                    &.pay5 {
+                        background-position: -433px -331px;
+                    }
+
+                    &.del1 {
+                        background-position: -119px -387px;
+                    }
+                    &.del2 {
+                        background-position: -225px -387px;
+                    }
+                    &.del3 {
+                        background-position: -330px -387px;
+                    }
+                    &.del4 {
+                        background-position: -15px -387px;
+                    }
+                    
+                }
+            }
+        }
+    }
+    .footer-bottom {
+        background: $secondary;
+        margin-top: 100px;
+        text-align: center;
+        padding: 20px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.11);
+        .text-copyright {
+            font-size: $small;
+            font-weight: $normal;
+            color: $white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            a {
+                font-weight: $normal;
+                color: #59f04b;
+                font-weight: $bold;
+            }
+        }
+    }
+}
+
+@mixin bsCarouselNav {
+    .carousel-control-next-icon,
+        .carousel-control-prev-icon {
+            @include spiriteImg();
+        }
+        .carousel-control-next-icon {
+            background-position: -60px -144px;
+        }
+        .carousel-control-prev-icon {
+            background-position: -95px -144px;
+        }
+        .carousel-control-next,
+        .carousel-control-prev {
+            opacity: 1;
+            width: 60px;
+            height: 60px;
+            @include spiriteImg();
+            background: $white;
+            border: 0;
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+            right: 0;
+            left: inherit;
+        }
+        .carousel-control-next {
+            top: -50px;
+        }
+        .carousel-control-prev {
+            top: -50px;
+            right: 60px;
+        }
+        .carousel-indicators {
+            left: 0;
+            display: block;
+            bottom: 30px;
+            right: inherit;
+            margin: 0 30px 0 0;
+            button {
+                width: 8px;
+                height: 8px;
+                border-radius: 30px;
+                background: none;
+                border: 2px solid $white;
+                margin-right: 5px;
+                opacity: 1;
+                &.active {
+                    background: $white;
+                }
+            }
+        }
+}
+
+@mixin shadowDrop {
+    &::after {
+        content: "";
+        background: url(assets/images/shadow.png) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        bottom: -40px;
+        left: 0;
+        width: 100%;
+        height: 40px;
+    }
+}
+
+@mixin ul {
+    margin: 0;
+    padding: 0;
+    li {
+        list-style: none;
+    }
+}
+
+@mixin sectionPadding {
+    @media screen and (min-width: 992px) {
+        padding: 80px 0;
+    }
+    padding: 40px 0;
+}
+
+@mixin hoverScale {
+    transition: .1s ease-in-out;
+    &:hover {
+        transform: scale(1.04);
+    }
+}
+
+@mixin paginationStyle() {
+    li {
+        margin-right: 5px;
+        @include rightMargin();
+        a {
+            border-radius: 30px;
+            border: 0;
+            @include hoverScale();
+            @include fontSecond();
+            color: $dark;
+            font-weight: $bold;
+            &:hover {
+                background: $primary;
+                color: $dark;
+            }
+        }
+    }
+}
+
+@mixin dotAnimation() {
+    position: relative;
+    z-index: 1;
+    &::before {
+        content: "";
+        @include absolute();
+        background: $white;
+        width: 8px;
+        height: 8px;
+        border-radius: 100%;
+        left: 6px;
+        top: 8px;
+        z-index: 1;
+    }
+    &::after {
+        content: "";
+        @include absolute();
+        width: 20px;
+        height: 20px;
+        left: 0;
+        top: 2px;
+        border-radius: 100%;
+        z-index: 1;
+        border: 2px solid $white;
+        animation: circleZoom 1s ease-in-out infinite;
+    }
+    @keyframes circleZoom {
+        from {
+            transform: scale(0.7);
+            opacity: 1;
+        }
+        to {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+}
+
+@mixin ulInitial {
+    padding-left: 20px;
+    li {
+        list-style: initial;
+    }
+}
+
+@mixin noShadow {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+@mixin rightMargin {
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+@mixin leftMargin {
+    &:first-child {
+        margin-left: 0;
+    }
+}
+@mixin topMargin {
+    &:last-child {
+        margin-top: 0;
+    }
+}
+
+@mixin bottomMargin {
+    &:last-child {
+        margin-top: 0;
+    }
+}
+
+@mixin inputField {
+    position: relative;
+    margin-bottom: 15px;
+    p {
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+    select,
+    input,
+    textarea {
+        border: 1px solid rgb(0 0 0 / 20%);
+        padding: 9px 15px;
+        border-radius: 4px;
+        outline: none;
+        // @include focus();
+        font-size: $medium;
+        width: 100%;
+        font-weight: $normal;
+        // @include focus();
+
+	&[cols] {
+            height: inherit;
+        }
+
+    }
+}
+
+@mixin readMore {
+    color: $info;
+    font-weight: $bold;
+    margin: 0;
+    display: inline-block;
+    @include hover();
+    @include fontSecond();
+}
+
+@mixin stylishDropdown {
+    button {
+        font-weight: $bold
+    }
+    .dropdown-menu {
+        @include shadow;
+        border-radius: 0;
+        border: 0;
+        padding: 8px 0;
+        max-height: 600px;
+        overflow: auto;
+	border-radius: 15px;
+        .dropdown-item {
+            padding: 6px 15px;
+            font-size: $small;
+            font-weight: $normal;
+            color: $dark;
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
+}
+
+@mixin textSpacing {
+    letter-spacing: 1px;
+    font-weight: $bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+@mixin primary {
+    background: #ff4d00;
+    color: #fff;
+}
+
+@mixin info {
+    background: #285fdb;
+    color: #fff;
+}
+
+@mixin gray {
+    background: #f0f1f5;
+}
+
+@mixin textPrimary {
+    color: #ff4d00;
+}
+
+@mixin secondary {
+    background: #8e8b92;
+    color: #fff;
+}
+
+@mixin textSecondary {
+    color: #8e8b92;
+}
+
+@mixin dCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+@mixin shadow {
+    -webkit-box-shadow: 0px 0px 15px -9px rgb(0 0 0 / 41%);
+    -moz-box-shadow: 0px 0px 15px -9px rgb(0 0 0 / 41%);
+    box-shadow: 0px 0px 15px -9px rgb(0 0 0 / 41%);
+}
+
+@mixin fontMain {
+    font-family: 'Roboto Slab', serif;
+}
+
+@mixin fontSecond {
+    font-family: 'Outfit', sans-serif;
+}
+
+@mixin absolute {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+@mixin absoluteCenter {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin buttonSolid {
+    border-radius: 5px;
+    border: 0;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: $small;
+    font-weight: $normal;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    @include focus;
+    @include fontSecond();
+    @include hoverScale();
+}
+
+@mixin buttonOutline {
+    @include buttonSolid();
+    padding: 8px 20px;
+}
+
+@mixin small {
+    font-size: 10px !important;
+    padding: 2px 20px !important;
+}
+
+@mixin table-default {
+    table {
+        thead {
+          background: $secondary;
+          color: $white;
+        }
+        tr {
+          th, td {
+              font-size: $small;
+              font-weight: $normal;
+          }
+      }
+    }
+}
+
+@mixin table-icon {
+    @include buttonSolid();
+    @include small();
+    border: 2px solid transparent;
+    color: $white;
+    background: none;
+    &.edit {
+        color: $info;
+        border-color: $info;
+    }
+    &.delete {
+        color: $red;
+        border-color: $info;
+    }
+}
+
+@mixin buttonLight {
+    @include buttonSolid();
+    background-image: linear-gradient(#f5f5f5, $white);
+    color: $dark;
+}
+
+@mixin buttonLightOutline {
+    @include buttonOutline();
+    background: none;
+    border: 2px solid $white;
+    color: $white;
+}
+
+@mixin buttonPrimary {
+    @include buttonSolid();
+    background-image: linear-gradient(#df828a, $primary);
+    color: #fff;
+}
+
+@mixin buttonPrimaryOutline {
+    @include buttonOutline();
+    background: none;
+    border: 2px solid $primary;
+    color: $primary;
+}
+
+@mixin buttonSecondary {
+    @include buttonSolid();
+    background-image: linear-gradient(#75525c, $secondary);
+    color: $white;
+}
+
+@mixin buttonSecondaryOutline {
+    @include buttonOutline();
+    background: none;
+    border: 2px solid $secondary;
+    color: $secondary;
+}
+
+@mixin buttonInfo {
+    @include buttonSolid();
+    background-image: linear-gradient(#3970f0, $info);
+    color: $white;
+}
+
+@mixin buttonInfoOutline {
+    @include buttonOutline();
+    background: none;
+    border: 2px solid $info;
+    color: $info;
+}
+
+@mixin focus {
+    transition: .2s ease-in-out;
+    &:active {
+        transform: scale(0.9);
+    }
+}
+
+@mixin focusHover {
+    transition: .2s ease-in-out;
+    &:active {
+        transform: scale(0.9);
+    }
+}
+
+@mixin objectCover {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+@mixin objectContain {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+@mixin hover {
+    &:hover {
+        transition: .2s ease-in-out;
+        color: $primary;
+        opacity: 0.5;
+    }
+}
+
+@mixin spiriteImg {
+    background: url(assets/images/spirite.png) no-repeat;
+    background-size: 1000px 2000px;
+}
+
+@mixin mainheading {
+    font-weight: $bold;
+    font-size: $xxLarge;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+@mixin mainHeading {
+    margin-bottom: 20px;
+    p {
+        margin: 0;
+    }
+    @include mainheading();
+    .subheading {
+        font-weight: $normal;
+        font-size: $large;
+    }
+}
+
+@mixin heading {
+    font-weight: $bold;
+    font-size: $large;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+@mixin subheading {
+    font-weight: $normal;
+    margin-top: 0;
+    font-size: $default;
+}
+
+@mixin socialUl {
+    li {
+        display: inline-block;
+        a {
+            width: 36px;
+            height: 36px;
+            @include dCenter();
+            color: $info;
+            border-radius: 100%;
+            background: none;
+            border: 0;
+            color: $white;
+            transition: .2s ease-in-out;
+            &.facebook {
+                background: #375197;
+              }
+              &.linkedin {
+                background: #026eaa;
+              }
+              &.instagram {
+                background-image: linear-gradient(162deg, #9748cf, #f8416a, #ff993e);
+              }
+              &.twitter {
+                background: #1c99e6;
+              }
+              &:hover {
+                color: #f5f5f5;
+                text-decoration: none;
+                transform: scale(1.05);
+              }
+        }
+        margin-right: 15px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+// MIXIN START END
+// ::-webkit-scrollbar-thumb {
+//     background: $dark;
+// }
+body,
+div,
+ul,
+li,
+a,
+b,
+strong,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @include fontMain;
+}
+
+div,
+p,
+li,
+ul {
+    font-size: 14px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    li {
+        list-style: none;
+    }
+}
+
+.primary {
+    color: $primary
+}
+
+.secondary {
+    color: $secondary;
+}
+
+.info {
+    color: $info;
+}
+
+.gray {
+    color: $gray;
+}
+
+.dark {
+    color: $gray;
+}
+
+.white {
+    color: $white;
+}
+
+.yellow {
+    color: $yellow;
+}
+
+.red {
+    color: $red
+}
+
+.hoverScale {
+    @include hoverScale();
+}
+
+.dotAnimation {
+    @include dotAnimation();
+}
+
+.ulInitial {
+    @include ulInitial();
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.small {
+    @include small();
+}
+
+.noShadow {
+    @include noShadow();
+}
+
+.rightMargin {
+    @include rightMargin()
+}
+
+.leftMargin {
+    @include leftMargin()
+}
+
+.inputField {
+    @include inputField();
+}
+
+.readMore {
+    @include readMore();
+}
+
+.hover {
+    @include hover();
+}
+
+.stylishDropdown {
+    @include stylishDropdown();
+}
+
+.dCenter {
+    @include dCenter();
+}
+
+.focus {
+    @include focus();
+}
+
+.focusHover {
+    @include focusHover();
+}
+
+.mainheading {
+    @include mainheading();
+}
+
+.mainHeading {
+    @include mainHeading();
+}
+
+.heading {
+    @include heading();
+}
+
+.subheading {
+    @include subheading();
+}
+
+.spiriteImg {
+    @include spiriteImg();
+}
+
+.socialUl {
+    @include socialUl();
+}
+
+.objectCover {
+    @include objectCover();
+}
+
+.buttonLight {
+    @include buttonLight();
+}
+
+.buttonLightOutline {
+    @include buttonLightOutline();
+}
+
+.buttonPrimary {
+    @include buttonPrimary();
+}
+
+.buttonPrimaryOutline {
+    @include buttonPrimaryOutline();
+}
+
+.buttonSecondary {
+    @include buttonSecondary();
+}
+
+.buttonSecondaryOutline {
+    @include buttonSecondaryOutline();
+}
+
+.buttonInfo {
+    @include buttonInfo()
+}
+
+.buttonInfoOutline {
+    @include buttonInfoOutline();
+}
+
+// ::-webkit-scrollbar {
+//     height: 2px !important;
+//     width: 6px !important;
+// }
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+    text-align: justify;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.list-initial li {
+    list-style: initial;
+}
+
+.bgNone {
+    background: none !important;
+}
+
+.bgPrimary {
+    background: $primary;
+}
+
+.textPrimary {
+    color: $primary;
+}
+
+.bgInfo {
+    background: $info;
+}
+
+.textInfo {
+    color: $info;
+}
+
+.bgSecondary {
+    background: $secondary;
+}
+
+.textSecondary {
+    color: $secondary;
+}
+
+.bgDark {
+    background: $dark;
+}
+
+.textDark {
+    color: $dark !important;
+}
+
+.bgYellow {
+    background: $yellow;
+}
+
+.textYellow {
+    color: $yellow;
+}
+
+.bgWhite {
+    background: #fff;
+}
+
+.textWhite {
+    color: #fff !important;
+}
+
+.bgRed {
+    background: $red;
+}
+
+.textRed {
+    color: $red;
+}
+
+.bgGray {
+    background: $gray;
+}
+
+.textGray {
+    color: $gray;
+}
+
+.borderLight {
+    border: $border-light;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.shadow {
+    @include shadow();
+}
+
+.paginationStyle {
+    @include paginationStyle();
+}
+
+@media (min-width: 992px) {
+    .desktop-none {
+        display: none !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .mobile-none {
+        display: none !important;
+    }
+}
+
+.modal-backdrop {
+    z-index: 9;
+}
+
+.modal {
+    z-index: 99;
+    background: rgba(0, 0, 0, 0.762);
+    .modal-dialog {
+        max-width: 95%;
+    }
+    .modal-content {
+        border-radius: 0;
+        .modal-body {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    }
+    .close {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        font-weight: 300;
+        font-size: 30px;
+        opacity: 1;
+    }
+}
+
+.modalContent {
+    .heading {
+        font-weight: 700;
+        font-size: 22px;
+        color: #1a1a1a;
+    }
+}
+
+
+/* DEFAULT ATTRIBUTE END */
+
+// ANGULAR MATERIAL
+.cdk-overlay-container {
+    z-index: 99999999;
+}
+.mat-input-element {
+    box-sizing: border-box !important;
+}
+
+mat-form-field {
+    width: 100%;
+    input {
+        padding: 0 10px !important;
+    }
+    .mat-form-field-wrapper {
+        padding-bottom: 0 !important;
+    }
+}
+
+.mat-form-field-underline {
+    width: 0 !important;
+}
+
+.mat-form-field-infix {
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    border: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+}
+
+.mat-select-trigger {
+    border: 0;
+    border-bottom: 2px solid #000;
+    padding: 5px 0;
+    border-radius: 0;
+    background: #ffffff;
+    outline: none;
+    min-width: 100%;
+    max-width: 100%;
+    font-size: 14px;
+    height: 35px;
+}
+
+.mat-select-arrow {
+    top: 10px;
+    position: relative;
+}
+
+[button-spinner] {
+    width: 14px !important;
+    height: 14px !important;
+    float: right;
+    padding-left: 10px;
+    svg {
+        width: 14px !important;
+        height: 14px !important;
+    }
+}
+
+// ANGULAR MATERIAL END
